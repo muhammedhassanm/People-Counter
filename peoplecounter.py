@@ -1,25 +1,18 @@
 import cv2
 import numpy as np
-import argparse
 import datetime
 import imutils
 import math
 from imutils.object_detection import non_max_suppression
 from imutils import paths
 
-parser = argparse.ArgumentParser(description='Description of your program')
-parser.add_argument('-vid','--video',required=True,default="Input/2.mp4",help="Video File Path")
-parser.add_argument('-roi','--roi creation mode',required=False,default="manually",help="Create region of interest-do it 'manually'," + 
-					"or use the 'pre-tested' one which gives good results")
-args = vars(parser.parse_args())
-
-video=args['video']
-roi_mode=args['roi creation mode']
+video='F:/People-Counter/Input/1.mp4'
+roi_mode="manually" # or pre-tested
 
 width = 800
 height= 640
 videopath,__=video.split(".",-1)
-__,videoname=videopath.split('/',-1)
+videoname=videopath.split('/',-1)
 counter,textIn,textOut=0,0,0
 imageset=[]
 hog = cv2.HOGDescriptor()
